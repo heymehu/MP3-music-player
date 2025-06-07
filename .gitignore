@@ -31,4 +31,7 @@ replay_pid*
 
 # System files
 .DS_Store
-Thumbs.db 
+Thumbs.db
+
+# Allow lib directory
+!lib/ 
