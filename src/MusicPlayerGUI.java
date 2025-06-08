@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class MusicPlayerGUI extends JFrame {
     // color configurations
-    public static final Color FRAME_COLOR = Color.BLACK;
+    public static final Color FRAME_COLOR = new Color(60, 40, 80);  // Dark purple
     public static final Color TEXT_COLOR = Color.WHITE;
 
     private MusicPlayer musicPlayer;
@@ -46,6 +46,8 @@ public class MusicPlayerGUI extends JFrame {
 
         // change the frame color
         getContentPane().setBackground(FRAME_COLOR);
+        setBackground(FRAME_COLOR);
+        getRootPane().setBackground(FRAME_COLOR);
 
         musicPlayer = new MusicPlayer(this);
         jFileChooser = new JFileChooser();
@@ -125,20 +127,26 @@ public class MusicPlayerGUI extends JFrame {
     private void addToolbar(){
         JToolBar toolBar = new JToolBar();
         toolBar.setBounds(0, 0, getWidth(), 20);
+        toolBar.setBackground(Color.WHITE);
 
         // prevent toolbar from being moved
         toolBar.setFloatable(false);
 
         // add drop down menu
         JMenuBar menuBar = new JMenuBar();
+        menuBar.setBackground(Color.WHITE);
         toolBar.add(menuBar);
 
         // now we will add a song menu where we will place the loading song option
         JMenu songMenu = new JMenu("Song");
+        songMenu.setBackground(Color.WHITE);
+        songMenu.setForeground(Color.BLACK);
         menuBar.add(songMenu);
 
         // add the "load song" item in the songMenu
         JMenuItem loadSong = new JMenuItem("Load Song");
+        loadSong.setBackground(Color.WHITE);
+        loadSong.setForeground(Color.BLACK);
         loadSong.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -169,10 +177,14 @@ public class MusicPlayerGUI extends JFrame {
 
         // now we will add the playlist menu
         JMenu playlistMenu = new JMenu("Playlist");
+        playlistMenu.setBackground(Color.WHITE);
+        playlistMenu.setForeground(Color.BLACK);
         menuBar.add(playlistMenu);
 
         // then add the items to the playlist menu
         JMenuItem createPlaylist = new JMenuItem("Create Playlist");
+        createPlaylist.setBackground(Color.WHITE);
+        createPlaylist.setForeground(Color.BLACK);
         createPlaylist.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -183,6 +195,8 @@ public class MusicPlayerGUI extends JFrame {
         playlistMenu.add(createPlaylist);
 
         JMenuItem loadPlaylist = new JMenuItem("Load Playlist");
+        loadPlaylist.setBackground(Color.WHITE);
+        loadPlaylist.setForeground(Color.BLACK);
         loadPlaylist.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -210,7 +224,7 @@ public class MusicPlayerGUI extends JFrame {
     private void addPlaybackBtns(){
         playbackBtns = new JPanel();
         playbackBtns.setBounds(0, 435, getWidth() - 10, 80);
-        playbackBtns.setBackground(null);
+        playbackBtns.setBackground(FRAME_COLOR);
 
         // previous button
         JButton prevButton = new JButton(loadImage("src/assets/previous.png"));

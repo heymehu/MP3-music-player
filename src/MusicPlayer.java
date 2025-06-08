@@ -49,6 +49,11 @@ public class MusicPlayer extends PlaybackListener {
     // constructor
     public MusicPlayer(MusicPlayerGUI musicPlayerGUI){
         this.musicPlayerGUI = musicPlayerGUI;
+        this.currentPlaylistIndex = 0;
+        this.isPaused = false;
+        this.songFinished = false;
+        this.pressedNext = false;
+        this.pressedPrev = false;
     }
 
     public void loadSong(Song song){
@@ -273,16 +278,16 @@ public class MusicPlayer extends PlaybackListener {
                 while(!isPaused && !songFinished && !pressedNext && !pressedPrev){
                     try{
                         // increment current time milli
-                        currentTimeInMilli++;
+                        currentTimeInMilli += 100; // Update every 100ms for better accuracy
 
                         // calculate into frame value
-                        int calculatedFrame = (int) ((double) currentTimeInMilli * 2.08 * currentSong.getFrameRatePerMilliseconds());
+                        int calculatedFrame = (int) ((double) currentTimeInMilli * currentSong.getFrameRatePerMilliseconds());
 
                         // update gui
                         musicPlayerGUI.setPlaybackSliderValue(calculatedFrame);
 
-                        // mimic 1 millisecond using thread.sleep
-                        Thread.sleep(1);
+                        // sleep for 100ms
+                        Thread.sleep(100);
                     }catch(Exception e){
                         e.printStackTrace();
                     }
