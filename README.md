@@ -33,5 +33,5 @@
 <!--Screenshots (GIFs/PNGs)-->
 <h2>Screenshots</h2>
 <p align="center">
-  <img src="Screenshot_38.png" alt="Music Player App Screenshot">
+  <img src="Screenshot 2025-06-08 111746.png" alt="Music Player App Screenshot">
 </p>
